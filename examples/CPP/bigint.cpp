@@ -39,9 +39,10 @@ public:
         tmp_str.erase();
     }
 
-    bigint& operator=(const bigint&) = delete;
+    bigint& operator=(const bigint&) = delete; // просто пример удаления оператора
 
     friend bigint& operator-(bigint& lhs, const bigint& rhs);
+    friend bigint& operator-=(bigint& lhs, const bigint& rhs);
 
     friend bigint& operator+(const bigint& lhs, const bigint& rhs) {
         bigint res(lhs);
@@ -49,36 +50,48 @@ public:
         return res;
     }
 
-    bigint& operator+=(const bigint& rhs) {
-        int carry = 0;
-        unsigned long long first = 0;
-        unsigned long long second = 0;
-        long long carry = 0;
-        std::vector<unsigned long long> res{};
-
-        if (!(rhs.is_negative ^ is_negative)) {
-            for (int i = 0; i < rhs.data.size() || i < data.size(); i++) {
-                if (i >= rhs.data.size()) {
-                    second = 0;
-                    first = data[i];
-                } else if (i >= data.size()) {
-                    first = 0;
-                    second = rhs.data[i];
-                } else {
-                    second = rhs.data[i];
-                    first = data[i];
-                }
-                unsigned long long tmp_res = first + second + carry;
-                res.push_back(tmp_res % MAX_NUM);
-                carry = (first + second + carry) / MAX_NUM;
-            }
-        } else if (rhs.negative) {
-            *this -= rhs;
-        } else {
-            rhs -= *this;
+    bigint& operator+=(const bigint& rhs)
+    {
+        // Если знаки разные, используем вычитание
+        if (is_negative != rhs.is_negative)
+        {
+            // Копируем right-hand side (правый операнд) чтобы изменить его знак
+            bigint temp = rhs;
+            temp.is_negative = !temp.is_negative;
+            return *this -= temp;
         }
 
-        return * this;
-    }
+        // Определяем максимальный размер
+        size_t max_size = std::max(data.size(), rhs.data.size());
+        data.resize(max_size, 0);
 
+        unsigned long long carry = 0;
+
+        for (size_t i = 0; i < max_size; ++i)
+        {
+            unsigned long long rhs_val = (i < rhs.data.size()) ? rhs.data[i] : 0;
+            unsigned long long sum = data[i] + rhs_val + carry;
+
+            // Проверяем на переполнение
+            if (sum < data[i] || sum < rhs_val)
+            {
+                carry = 1;
+            }
+            else
+            {
+                carry = sum >> 63; // Для 64-битных чисел (альтернативный способ проверки переполнения)
+                if (carry == 0 && (sum >> 63) != 0) carry = 1; // Дополнительная проверка
+            }
+
+            data[i] = sum;
+        }
+
+        // Если остался перенос
+        if (carry != 0)
+        {
+            data.push_back(carry);
+        }
+
+        return *this;
+    }
 };
