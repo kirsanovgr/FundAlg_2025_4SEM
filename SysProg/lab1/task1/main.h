@@ -1,7 +1,0 @@
-#ifndef SYSTEM_PROGRAMMING_CLIENT_H
-#define SYSTEM_PROGRAMMING_MAIN_H
-
-#include "dialog.h"
-
-
-#endif //SYSTEM_PROGRAMMING_CLIENT_H
