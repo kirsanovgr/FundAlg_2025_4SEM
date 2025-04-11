@@ -17,6 +17,6 @@ FetchContent_MakeAvailable(googletest)
 
 add_compile_options(-Wall -Wextra -Werror -Wpedantic)
 
-add_subdirectory(Lab1/Task1)
-add_subdirectory(Lab1/Task2)
-add_subdirectory(Lab1/Task3)
+add_subdirectory(FundAlg/Lab1/Task1)
+add_subdirectory(FundAlg/Lab1/Task2)
+add_subdirectory(FundAlg/Lab1/Task3)
