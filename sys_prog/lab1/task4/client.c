@@ -1,11 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/ipc.h>
-#include <sys/msg.h>
-#include <unistd.h>
 #include "messages.h"
-
 
 void get_password(char *password, size_t max_len) {
     printf("Enter shutdown password: ");
@@ -20,22 +13,23 @@ void get_password(char *password, size_t max_len) {
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
-        fprintf(stderr, "Usage: %s <command_file>\n", argv[0]);
-        exit(1);
+        printf("Invalid args\n");
+        return INVALID_ARGS;
     }
 
 
     FILE *file = fopen(argv[1], "r");
     if (!file) {
-        exit(1);
+        printf("File Error\n");
+        return FILE_ERROR;
     }
 
 
     key_t key = ftok("msgqueue", 'A');
     int msgid = msgget(key, 0666);
     if (msgid == -1) {
-        fprintf(stderr, "Check if server is running\n");
-        exit(1);
+        printf("Message error\n");
+        return MSG_ERROR;
     }
 
     int user_id = getpid();
@@ -72,7 +66,6 @@ int main(int argc, char *argv[]) {
 
         printf("Server response: %s\n", srv_msg.response);
         sleep(1);
-
         if (strstr(srv_msg.response, "shutting down")) {
             break;
         }

@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-#include <sys/ipc.h>
-#include <sys/msg.h>
-#include "server.h"
+#include "messages.h"
 
 UserState* get_user_state(ServerState *state, int user_id) {
     for (int i = 0; i < state->user_count; i++) {
