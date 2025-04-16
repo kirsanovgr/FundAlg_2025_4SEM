@@ -1,46 +1,64 @@
-#include "../include/logger.hpp"
-
 #include <utility>
 
-std::string Logger::get_datetime() {
-	auto now = std::chrono::system_clock::now();
-	auto time = std::chrono::system_clock::to_time_t(now);
-	std::tm timeBuf{};
+#include "../include/logger.hpp"
 
-	localtime_r(&time, &timeBuf);
+Logger::Builder &Logger::Builder::setName(const std::string &name) {
+    name_ = name;
+    return *this;
+}
 
-	std::ostringstream timeStream;
-	timeStream << std::put_time(&timeBuf, "%Y-%m-%d %H:%M:%S");
-	std::string timeStr = timeStream.str();
-	return timeStr;
+Logger::Builder &Logger::Builder::setLevel(Logger::LevelLogger level) {
+    level_ = level;
+    return *this;
+}
+
+Logger::Builder &Logger::Builder::addHandler(std::unique_ptr<LogHandler> handler) {
+    handlers_.push_back(std::move(handler));
+    return *this;
+}
+
+Logger *Logger::Builder::build() {
+    auto* logger = new Logger(name_, level_);
+    for(auto& handler : handlers_) {
+        logger->addHandler(std::move(handler));
+    }
+    return logger;
 }
 
 void Logger::Log(Logger::LevelLogger level, const std::string &log) {
-	if (level > log_level) return;
-	std::string result = "[";
-	std::string time = get_datetime();
-	result += time + "][";
-	switch (level) {
-		case LOG_CRITICAL:
-			result += "CRITICAL]";
-			break;
-		case LOG_ERROR:
-			result += "ERROR]";
-			break;
-		case LOG_WARNING:
-			result += "WARNING]";
-			break;
-		case LOG_INFO:
-			result += "INFO]";
-			break;
-		case LOG_DEBUG:
-			result += "DEBUG]";
-			break;
-	}
-	result += " " + log;
-	for (auto &out : handlers) {
-		out->write(result);
-	}
+    if (level > log_level) return;
+    std::string result = "[";
+    std::string time = get_datetime();
+    result += time + "][";
+    switch (level) {
+        case LOG_CRITICAL:
+            result += "CRITICAL]";
+            break;
+        case LOG_ERROR:
+            result += "ERROR]";
+            break;
+        case LOG_WARNING:
+            result += "WARNING]";
+            break;
+        case LOG_INFO:
+            result += "INFO]";
+            break;
+        case LOG_DEBUG:
+            result += "DEBUG]";
+            break;
+    }
+    result += " " + log;
+    for (auto &out: handlers) {
+        out->write(result);
+    }
+}
+
+std::string Logger::get_datetime() {
+    auto now = std::chrono::system_clock::now();
+    auto time = std::chrono::system_clock::to_time_t(now);
+    std::stringstream ss;
+    ss << std::put_time(std::localtime(&time), "%Y-%m-%d %X");
+    return ss.str();
 }
 
 void Logger::LogError(const std::string &log) { Log(LOG_ERROR, log); }
@@ -53,25 +71,21 @@ void Logger::LogInfo(const std::string &log) { Log(LOG_INFO, log); }
 
 void Logger::LogDebug(const std::string &log) { Log(LOG_DEBUG, log); }
 
-void Logger::addHandler(std::unique_ptr<LogHandler> handler) { handlers.push_back(std::move(handler)); }
+void Logger::close_logger() {
+    handlers.clear();
+}
 
-void Logger::setHandler(Logger::LevelLogger level) { log_level = level; }
+Logger &Logger::addHandler(std::unique_ptr<LogHandler> handler) {
+    handlers.push_back(std::move(handler));
+    return *this;
+}
 
-Logger::Logger(std::string logger_n, Logger::LevelLogger logger_level)
-    : logger_name(std::move(logger_n)), log_level(logger_level) {}
-
-void Logger::close_logger() { handlers.clear(); }
-
-StreamLoggerHandler::StreamLoggerHandler(std::ostream &stream) : stream_{stream} {}
+StreamLoggerHandler::StreamLoggerHandler(std::ostream &stream) : stream_(stream) {}
 
 void StreamLoggerHandler::write(const std::string &message) { stream_ << message << std::endl; }
 
-Logger *LoggerBuilder::build(const std::string &logger_name, Logger::LevelLogger logger_level) {
-	return new Logger{logger_name, logger_level};
-}
+FileLoggerHandler::FileLoggerHandler(const std::string &filename) { out.open(filename); }
 
 void FileLoggerHandler::write(const std::string &message) { out << message << std::endl; }
 
-FileLoggerHandler::FileLoggerHandler(const std::string &filename) : out(filename, std::ios::app) {}
-
-FileLoggerHandler::~FileLoggerHandler() { out.close(); }
+FileLoggerHandler::~FileLoggerHandler() { if(out.is_open()) out.close(); }

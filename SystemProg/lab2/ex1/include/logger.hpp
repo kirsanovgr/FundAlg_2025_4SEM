@@ -1,62 +1,76 @@
 #pragma once
 
-#include <chrono>
-#include <fstream>
-#include <iomanip>
 #include <iostream>
+#include <iomanip>
+#include <chrono>
 #include <vector>
+#include <fstream>
+#include <memory>
+#include <utility>
 
 class LogHandler {
-   public:
-	virtual void write(const std::string &message) = 0;
-	virtual ~LogHandler() = default;
+public:
+    virtual void write(const std::string &message) = 0;
+    virtual ~LogHandler() = default;
 };
 
 class StreamLoggerHandler : public LogHandler {
-   protected:
-	std::ostream &stream_;
-
-   public:
-	explicit StreamLoggerHandler(std::ostream &stream = std::cout);
-	void write(const std::string &message) override;
+protected:
+    std::ostream &stream_;
+public:
+    explicit StreamLoggerHandler(std::ostream &stream = std::cout);
+    void write(const std::string &message) override;
 };
 
 class FileLoggerHandler : public LogHandler {
-   protected:
-	std::ofstream out;
-
-   public:
-	explicit FileLoggerHandler(const std::string &filename);
-	void write(const std::string &message) override;
-	~FileLoggerHandler() override;
+    std::ofstream out;
+public:
+    explicit FileLoggerHandler(const std::string& filename);
+    void write(const std::string& message) override;
+    ~FileLoggerHandler() override;
 };
 
 class Logger {
-   public:
-	enum LevelLogger { LOG_CRITICAL, LOG_ERROR, LOG_WARNING, LOG_INFO, LOG_DEBUG };
+public:
+    enum LevelLogger {
+        LOG_CRITICAL,
+        LOG_ERROR,
+        LOG_WARNING,
+        LOG_INFO,
+        LOG_DEBUG
+    };
 
-   private:
-	std::string logger_name;
-	std::vector<std::unique_ptr<LogHandler>> handlers;
-	LevelLogger log_level;
-	static std::string get_datetime();
+    class Builder {
+        std::string name_;
+        LevelLogger level_ = LOG_DEBUG;
+        std::vector<std::unique_ptr<LogHandler>> handlers_;
+    public:
+        Builder& setName(const std::string& name);
+        Builder& setLevel(LevelLogger level);
+        Builder& addHandler(std::unique_ptr<LogHandler> handler);
+        Logger* build();
+    };
 
-   public:
-	Logger(std::string logger_n, Logger::LevelLogger logger_level = Logger::LOG_DEBUG);
-	void Log(LevelLogger level, const std::string &log);
-	void LogError(const std::string &log);
-	void LogCritic(const std::string &log);
-	void LogWarning(const std::string &log);
-	void LogInfo(const std::string &log);
-	void LogDebug(const std::string &log);
+private:
+    std::string logger_name;
+    std::vector<std::unique_ptr<LogHandler>> handlers;
+    LevelLogger log_level;
 
-	void addHandler(std::unique_ptr<LogHandler> handler);
-	void setHandler(LevelLogger level);
+    static std::string get_datetime();
+    explicit Logger(std::string logger_n, LevelLogger logger_level = LOG_DEBUG)
+            : logger_name(std::move(logger_n)), log_level(logger_level) {}
 
-	void close_logger();
-};
+    Logger& addHandler(std::unique_ptr<LogHandler> handler);
+public:
 
-class LoggerBuilder {
-   public:
-	static Logger *build(const std::string &logger_name, Logger::LevelLogger logger_level = Logger::LOG_DEBUG);
+    void Log(LevelLogger level, const std::string &log);
+
+    void LogError(const std::string &log);
+    void LogCritic(const std::string &log);
+    void LogWarning(const std::string &log);
+    void LogInfo(const std::string &log);
+    void LogDebug(const std::string &log);
+
+    void close_logger();
+
 };
