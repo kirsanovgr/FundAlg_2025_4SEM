@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(LAB2T1)
+project(LAB2T2)
 set(CMAKE_CXX_STANDARD 20)
 
 
