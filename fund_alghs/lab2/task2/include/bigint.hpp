@@ -1,6 +1,6 @@
 #pragma once
 #include <math.h>
-
+#include <compare>
 #include <iomanip>
 #include <iostream>
 #include <vector>
@@ -52,6 +52,6 @@ class BigInt {
 	static bool validateString(const std::string& str);
 	void subtractValue(const BigInt& smaller);
 	void addValue(const BigInt& other);
-	int compareValue(const BigInt& other) const;
+	std::strong_ordering  compareValue(const BigInt& other) const;
 	bool isNull() const;
 };
