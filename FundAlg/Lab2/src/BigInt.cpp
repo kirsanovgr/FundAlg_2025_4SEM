@@ -300,8 +300,8 @@ BigInt BigInt::operator*(const BigInt& other) const {
         }
         // докидываем остаток
         while (for_next != 0) {
-            current_sum = ans.digits[i + count] + for_next;
-            ans.digits[i + count] = current_sum % base;
+            current_sum = ans.digits[i + other.digits.size()] + for_next;
+            ans.digits[i + other.digits.size()] = current_sum % base;
             for_next = current_sum / base;
         }
     }
