@@ -24,8 +24,8 @@ BigInt::BigInt(long long value) : BigInt() {
 BigInt::BigInt(const std::string& str) : BigInt() {
     digits.pop_back();
     size_t minus_checker = 0;
-    int base_len = 5;
-    int i;
+    long long base_len = 5;
+    long long i;
     for (i = str.size(); i - base_len >= 0; i -= base_len) {
         std::string tmp = str.substr(i - base_len, base_len);
         for (unsigned long long j = 0; j < tmp.size(); j++) {
@@ -299,7 +299,6 @@ BigInt BigInt::operator*(const BigInt& other) const {
 
         }
         // докидываем остаток
-        int count = other.digits.size();
         while (for_next != 0) {
             current_sum = ans.digits[i + count] + for_next;
             ans.digits[i + count] = current_sum % base;
@@ -345,9 +344,9 @@ BigInt BigInt::operator/(const BigInt& other) const {
         if (delim < abs_other) {
             break;
         }
-        int size_diff = delim.digits.size() - div.digits.size();
+        long long size_diff = delim.digits.size() - div.digits.size();
         // выравниваем делитель до порядка делимого
-        for (int i = 0; i < size_diff; i++) {
+        for (long long i = 0; i < size_diff; i++) {
             div.digits.insert(div.digits.begin(), 0);
         }
         // пока делитель больше уменьшаем 
