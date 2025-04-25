@@ -6,8 +6,8 @@
 class BigInt {
 public:
     BigInt();
-    BigInt(long long value);
-    BigInt(const std::string& str);
+    explicit BigInt(long long value);
+    explicit BigInt(const std::string& str);
     BigInt(const BigInt& other);
     BigInt(BigInt&& other) noexcept;
     // сам удалит vector
