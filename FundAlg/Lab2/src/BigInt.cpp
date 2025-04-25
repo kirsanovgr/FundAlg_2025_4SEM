@@ -66,9 +66,6 @@ BigInt::BigInt(const std::string& str) : BigInt() {
 BigInt::BigInt(const BigInt& other) : digits(other.digits), isNegative(other.isNegative) {}
 
 BigInt::BigInt(BigInt&& other) noexcept : digits(std::move(other.digits)), isNegative(std::move(other.isNegative)) {
-    other.digits.clear();
-    other.digits.push_back(0);
-    other.isNegative = false;
 }
 
 BigInt& BigInt::operator=(const BigInt& other) {
@@ -86,9 +83,6 @@ BigInt& BigInt::operator=(BigInt&& other) noexcept {
         digits.resize(other.digits.size());
         digits = std::move(other.digits);
         isNegative = std::move(other.isNegative);
-        other.digits.clear();
-        other.isNegative = false;
-        other.digits.push_back(0);
     }
     return *this;
     
