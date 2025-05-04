@@ -1,0 +1,54 @@
+Start testing: May 04 19:08 MSK
+----------------------------------------------------------
+1/1 Testing: MyTests
+1/1 Test: MyTests
+Command: "/mnt/c/Users/Олеся/CLionProjects/my_list/build/tests"
+Directory: /mnt/c/Users/Олеся/CLionProjects/my_list/build
+"MyTests" start time: May 04 19:08 MSK
+Output:
+----------------------------------------------------------
+Running main() from /mnt/c/Users/Олеся/CLionProjects/my_list/build/_deps/googletest-src/googletest/src/gtest_main.cc
+[==========] Running 13 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 13 tests from ListTest
+[ RUN      ] ListTest.DefaultConstructor
+[       OK ] ListTest.DefaultConstructor (0 ms)
+[ RUN      ] ListTest.InitializerListConstructor
+[       OK ] ListTest.InitializerListConstructor (0 ms)
+[ RUN      ] ListTest.CopyConstructor
+[       OK ] ListTest.CopyConstructor (0 ms)
+[ RUN      ] ListTest.MoveConstructor
+[       OK ] ListTest.MoveConstructor (0 ms)
+[ RUN      ] ListTest.CopyAssignment
+[       OK ] ListTest.CopyAssignment (0 ms)
+[ RUN      ] ListTest.MoveAssignment
+[       OK ] ListTest.MoveAssignment (0 ms)
+[ RUN      ] ListTest.FrontBack
+[       OK ] ListTest.FrontBack (0 ms)
+[ RUN      ] ListTest.FrontBackThrowsWhenEmpty
+[       OK ] ListTest.FrontBackThrowsWhenEmpty (0 ms)
+[ RUN      ] ListTest.SizeAndEmpty
+[       OK ] ListTest.SizeAndEmpty (0 ms)
+[ RUN      ] ListTest.PushPop
+[       OK ] ListTest.PushPop (0 ms)
+[ RUN      ] ListTest.Clear
+[       OK ] ListTest.Clear (0 ms)
+[ RUN      ] ListTest.Equality
+[       OK ] ListTest.Equality (0 ms)
+[ RUN      ] ListTest.Iteration
+[       OK ] ListTest.Iteration (0 ms)
+[----------] 13 tests from ListTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 13 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 13 tests.
+libgcov profiling error:/mnt/c/Users/Олеся/CLionProjects/my_list/build/CMakeFiles/tests.dir/tests/tests.cpp.gcda:overwriting an existing profile data with a different timestamp
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"MyTests" end time: May 04 19:08 MSK
+"MyTests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 04 19:08 MSK
