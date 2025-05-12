@@ -12,15 +12,15 @@ class Deque final : public List<T> {
 public:
     Deque() = default;
 
-    Deque(const Deque &other);
+    Deque(const Deque<T> &other);
 
-    Deque(Deque &&other) noexcept;
+    Deque(Deque<T> &&other) noexcept;
 
     Deque(std::initializer_list<T> init) : List<T>(init) {}
 
-    Deque &operator=(const Deque &other);
+    Deque<T> &operator=(const Deque &other);
 
-    Deque &operator=(Deque &&other) noexcept;
+    Deque<T> &operator=(Deque<T> &&other) noexcept;
 
     T &at(size_t pos);
 
