@@ -1,0 +1,5 @@
+take cabbage
+move
+put
+move
+take wolf
