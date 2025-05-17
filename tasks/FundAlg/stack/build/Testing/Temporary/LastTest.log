@@ -1,0 +1,51 @@
+Start testing: May 17 09:35 MSK
+----------------------------------------------------------
+1/1 Testing: MyTests
+1/1 Test: MyTests
+Command: "/mnt/c/Users/Олеся/CLionProjects/stack/build/tests"
+Directory: /mnt/c/Users/Олеся/CLionProjects/stack/build
+"MyTests" start time: May 17 09:35 MSK
+Output:
+----------------------------------------------------------
+Running main() from /mnt/c/Users/Олеся/CLionProjects/stack/build/_deps/googletest-src/googletest/src/gtest_main.cc
+[==========] Running 12 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 12 tests from StackTest
+[ RUN      ] StackTest.DefaultConstructor
+[       OK ] StackTest.DefaultConstructor (0 ms)
+[ RUN      ] StackTest.InitializerListConstructor
+[       OK ] StackTest.InitializerListConstructor (0 ms)
+[ RUN      ] StackTest.CopyConstructor
+[       OK ] StackTest.CopyConstructor (0 ms)
+[ RUN      ] StackTest.MoveConstructor
+[       OK ] StackTest.MoveConstructor (0 ms)
+[ RUN      ] StackTest.CopyAssignment
+[       OK ] StackTest.CopyAssignment (0 ms)
+[ RUN      ] StackTest.MoveAssignment
+[       OK ] StackTest.MoveAssignment (0 ms)
+[ RUN      ] StackTest.PushPopTop
+[       OK ] StackTest.PushPopTop (0 ms)
+[ RUN      ] StackTest.PopThrowsIfEmpty
+[       OK ] StackTest.PopThrowsIfEmpty (0 ms)
+[ RUN      ] StackTest.TopThrowsIfEmpty
+[       OK ] StackTest.TopThrowsIfEmpty (0 ms)
+[ RUN      ] StackTest.SwapTest
+[       OK ] StackTest.SwapTest (0 ms)
+[ RUN      ] StackTest.EqualityComparison
+[       OK ] StackTest.EqualityComparison (0 ms)
+[ RUN      ] StackTest.ComparisonOperators
+[       OK ] StackTest.ComparisonOperators (0 ms)
+[----------] 12 tests from StackTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 12 tests from 1 test suite ran. (1 ms total)
+[  PASSED  ] 12 tests.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"MyTests" end time: May 17 09:35 MSK
+"MyTests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 17 09:35 MSK

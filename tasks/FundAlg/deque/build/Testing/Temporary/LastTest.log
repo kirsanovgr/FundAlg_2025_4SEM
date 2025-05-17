@@ -1,0 +1,49 @@
+Start testing: May 09 16:23 MSK
+----------------------------------------------------------
+1/1 Testing: MyTests
+1/1 Test: MyTests
+Command: "/mnt/c/Users/Олеся/CLionProjects/deque/build/tests"
+Directory: /mnt/c/Users/Олеся/CLionProjects/deque/build
+"MyTests" start time: May 09 16:23 MSK
+Output:
+----------------------------------------------------------
+Running main() from /mnt/c/Users/Олеся/CLionProjects/deque/build/_deps/googletest-src/googletest/src/gtest_main.cc
+[==========] Running 11 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 11 tests from DequeTest
+[ RUN      ] DequeTest.SizeAndAccess
+[       OK ] DequeTest.SizeAndAccess (0 ms)
+[ RUN      ] DequeTest.AtOperatorValid
+[       OK ] DequeTest.AtOperatorValid (0 ms)
+[ RUN      ] DequeTest.AtOperatorOutOfRange
+[       OK ] DequeTest.AtOperatorOutOfRange (0 ms)
+[ RUN      ] DequeTest.IndexOperator
+[       OK ] DequeTest.IndexOperator (0 ms)
+[ RUN      ] DequeTest.PushBackAndPushFront
+[       OK ] DequeTest.PushBackAndPushFront (0 ms)
+[ RUN      ] DequeTest.PopBackAndPopFront
+[       OK ] DequeTest.PopBackAndPopFront (0 ms)
+[ RUN      ] DequeTest.ClearDeque
+[       OK ] DequeTest.ClearDeque (0 ms)
+[ RUN      ] DequeTest.CopyConstructor
+[       OK ] DequeTest.CopyConstructor (0 ms)
+[ RUN      ] DequeTest.MoveConstructor
+[       OK ] DequeTest.MoveConstructor (0 ms)
+[ RUN      ] DequeTest.CopyAssignment
+[       OK ] DequeTest.CopyAssignment (0 ms)
+[ RUN      ] DequeTest.MoveAssignment
+[       OK ] DequeTest.MoveAssignment (0 ms)
+[----------] 11 tests from DequeTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 11 tests from 1 test suite ran. (1 ms total)
+[  PASSED  ] 11 tests.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"MyTests" end time: May 09 16:23 MSK
+"MyTests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 09 16:23 MSK
