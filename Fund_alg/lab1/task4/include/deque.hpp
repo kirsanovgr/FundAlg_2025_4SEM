@@ -1,6 +1,5 @@
-#ifndef FUND_ALG_DEQUE_HPP
-#define FUND_ALG_DEQUE_HPP
 
+#pragma once
 #include "List.hpp"
 
 namespace my_container {
@@ -12,13 +11,13 @@ namespace my_container {
 
         Deque(std::initializer_list<T> init) : List<T>(init) {}
 
-        Deque(const Deque &other);
+        Deque(const Deque<T> &other);
 
-        Deque(Deque &&other) noexcept;
+        Deque(Deque<T> &&other) noexcept;
 
-        Deque &operator=(const Deque &other);
+        Deque<T> &operator=(const Deque<T> &other);
 
-        Deque &operator=(Deque &&other) noexcept;
+        Deque<T> &operator=(Deque<T> &&other) noexcept;
 
         T &at(size_t pos);
 
@@ -26,8 +25,6 @@ namespace my_container {
 
         bool operator==(const Container<T>& other) const override;
         bool operator!=(const Container<T>& other) const override;
-
-
     };
 
     template<typename T>
@@ -41,22 +38,22 @@ namespace my_container {
     }
 
     template<typename T>
-    Deque<T> &Deque<T>::operator=(Deque &&other) noexcept {
+    Deque<T> &Deque<T>::operator=(Deque<T> &&other) noexcept {
         List<T>::operator=(std::move(other));
         return *this;
     }
 
     template<typename T>
-    Deque<T> &Deque<T>::operator=(const Deque &other) {
+    Deque<T> &Deque<T>::operator=(const Deque<T> &other) {
         List<T>::operator=(other);
         return *this;
     }
 
     template<typename T>
-    Deque<T>::Deque(Deque &&other) noexcept : List<T>(std::move(other)) {}
+    Deque<T>::Deque(Deque<T> &&other) noexcept : List<T>(std::move(other)) {}
 
     template<typename T>
-    Deque<T>::Deque(const Deque &other) : List<T>(other) {}
+    Deque<T>::Deque(const Deque<T> &other) : List<T>(other) {}
 
 
     template <typename T>
@@ -69,11 +66,9 @@ namespace my_container {
     template <typename T>
     T &Deque<T>::at(size_t pos) {
         if (pos >= this->size()) {
-            throw std::out_of_range("At");
+            throw std::out_of_range("Out of range");
         }
         return (*this)[pos];
     }
-
 }
 
-#endif // FUND_ALG_DEQUE_HPP

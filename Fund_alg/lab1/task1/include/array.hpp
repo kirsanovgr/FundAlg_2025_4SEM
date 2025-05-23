@@ -22,10 +22,8 @@ namespace my_container {
     public:
         using value_type = T;
         using reference = T &;
-        using const_reference = const T &;
         using iterator = T *;
         using const_iterator = const T *;
-        using difference_type = ptrdiff_t;
         using reverse_iterator = std::reverse_iterator<iterator>;
         using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 

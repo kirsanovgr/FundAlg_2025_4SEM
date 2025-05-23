@@ -19,17 +19,17 @@ namespace my_container {
 
         Vector(const std::initializer_list<T>& other);
 
-        Vector(const Vector& other);
+        Vector(const Vector<T>& other);
 
-        Vector(Vector&& other) noexcept;
+        Vector(Vector<T>&& other) noexcept;
 
         ~Vector() override;
 
-        Vector& operator=(const Vector& other);
+        Vector<T>& operator=(const Vector<T>& other);
 
-        Vector& operator=(Vector&& other) noexcept;
+        Vector<T>& operator=(Vector<T>&& other) noexcept;
 
-        Vector& operator=(std::initializer_list<T> ilist);
+        Vector<T>& operator=(std::initializer_list<T> ilist);
 
         Container<T>& operator=(const Container<T>& other) override;
 
@@ -37,7 +37,7 @@ namespace my_container {
 
         bool operator!=(const Container<T>& other) const override;
 
-        std::strong_ordering operator<=>(const Vector& other) const;
+        std::strong_ordering operator<=>(const Vector<T>& other) const;
 
         T& operator[](size_t i);
         const T& operator[](size_t i) const;
@@ -94,7 +94,7 @@ namespace my_container {
 
         void resize(size_t new_size, const T& value = T());
 
-        void swap(Vector& other) noexcept;
+        void swap(Vector<T>& other) noexcept;
 
     private:
         T* data_ = nullptr;

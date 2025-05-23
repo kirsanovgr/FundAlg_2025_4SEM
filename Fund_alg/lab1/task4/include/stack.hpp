@@ -1,6 +1,4 @@
 
-#ifndef FUND_ALG_STACK_HPP
-#define FUND_ALG_STACK_HPP
 
 #include "deque.hpp"
 
@@ -48,16 +46,16 @@ namespace my_container {
     };
 
     template<typename T>
-    Stack<T>::Stack(): data{} {};
+    Stack<T>::Stack(): data{} {}
 
     template<typename T>
-    Stack<T>::Stack(std::initializer_list<T> init): data{init} {};
+    Stack<T>::Stack(std::initializer_list<T> init): data{init} {}
 
     template<typename T>
-    Stack<T>::Stack(const Stack<T> &other): data(other.data) {};
+    Stack<T>::Stack(const Stack<T> &other): data(other.data) {}
 
     template<typename T>
-    Stack<T>::Stack(Stack<T> &&other) noexcept: data(std::move(other.data)) {} ;
+    Stack<T>::Stack(Stack<T> &&other) noexcept: data(std::move(other.data)) {}
 
     template<typename T>
     Stack<T> &Stack<T>::operator=(const Stack<T> &other) {
@@ -101,7 +99,6 @@ namespace my_container {
         data.push_front(value);
     }
 
-
     template<typename T>
     void Stack<T>::push(T &&value) {
         data.push_front(value);
@@ -125,11 +122,9 @@ namespace my_container {
         return data <=> other.data;
     }
 
-
     template<typename T>
     void Stack<T>::swap(Stack<T> &other) {
         data.swap(other.data);
     }
 }
 
-#endif //FUND_ALG_STACK_HPP

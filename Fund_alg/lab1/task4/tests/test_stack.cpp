@@ -42,10 +42,8 @@ namespace my_container {
         sample_stack.push(4);
         sample_stack.push(5);
 
-        // Проверка верхнего элемента
-        EXPECT_EQ(sample_stack.top(), 5); // Исправлено ожидаемое значение
+        EXPECT_EQ(sample_stack.top(), 5);
 
-        // Дополнительные проверки
         sample_stack.pop();
         EXPECT_EQ(sample_stack.top(), 4);
 
@@ -112,9 +110,4 @@ namespace my_container {
         EXPECT_FALSE(sample_stack.empty());
     }
 
-}
-
-int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
 }

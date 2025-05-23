@@ -6,6 +6,7 @@ namespace my_container {
     class DequeTest : public ::testing::Test {
     protected:
         Deque<int> dq;
+        const Deque<int> const_dq{1, 2, 3};
 
         void SetUp() override {
             dq.push_back(1);
@@ -65,6 +66,8 @@ namespace my_container {
     TEST_F(DequeTest, AtValid) {
         EXPECT_EQ(dq.at(0), 1);
         EXPECT_EQ(dq.at(2), 3);
+        EXPECT_EQ(const_dq.at(0), 1);
+        EXPECT_EQ(const_dq.at(2), 3);
     }
 
     TEST_F(DequeTest, AtInvalid) {
@@ -161,4 +164,3 @@ namespace my_container {
         EXPECT_TRUE(d1 <=> d2 == std::strong_ordering::less);
     }
 }
-// namespace my_container
