@@ -1,0 +1,61 @@
+Start testing: May 23 19:28 MSK
+----------------------------------------------------------
+1/1 Testing: MyTests
+1/1 Test: MyTests
+Command: "/mnt/c/Users/senya/CLionProjects/fund_alg_4sem/lab1_5/cmake-build-debug/tests"
+Directory: /mnt/c/Users/senya/CLionProjects/fund_alg_4sem/lab1_5/cmake-build-debug
+"MyTests" start time: May 23 19:28 MSK
+Output:
+----------------------------------------------------------
+Running main() from /mnt/c/Users/senya/CLionProjects/fund_alg_4sem/lab1_5/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+[==========] Running 17 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 17 tests from VectorTest
+[ RUN      ] VectorTest.DefaultConstructor
+[       OK ] VectorTest.DefaultConstructor (0 ms)
+[ RUN      ] VectorTest.CopyConstructor
+[       OK ] VectorTest.CopyConstructor (0 ms)
+[ RUN      ] VectorTest.MoveConstructor
+[       OK ] VectorTest.MoveConstructor (0 ms)
+[ RUN      ] VectorTest.InitializerListConstructor
+[       OK ] VectorTest.InitializerListConstructor (0 ms)
+[ RUN      ] VectorTest.CopyAssignment
+[       OK ] VectorTest.CopyAssignment (0 ms)
+[ RUN      ] VectorTest.MoveAssignment
+[       OK ] VectorTest.MoveAssignment (0 ms)
+[ RUN      ] VectorTest.ElementAccess
+[       OK ] VectorTest.ElementAccess (3 ms)
+[ RUN      ] VectorTest.FrontBackData
+[       OK ] VectorTest.FrontBackData (0 ms)
+[ RUN      ] VectorTest.CapacityMethods
+[       OK ] VectorTest.CapacityMethods (0 ms)
+[ RUN      ] VectorTest.PushPop
+[       OK ] VectorTest.PushPop (0 ms)
+[ RUN      ] VectorTest.InsertErase
+[       OK ] VectorTest.InsertErase (0 ms)
+[ RUN      ] VectorTest.ClearResize
+[       OK ] VectorTest.ClearResize (0 ms)
+[ RUN      ] VectorTest.Comparisons
+[       OK ] VectorTest.Comparisons (0 ms)
+[ RUN      ] VectorTest.SwapTest
+[       OK ] VectorTest.SwapTest (0 ms)
+[ RUN      ] VectorTest.Iterators
+[       OK ] VectorTest.Iterators (0 ms)
+[ RUN      ] VectorTest.EdgeCases
+[       OK ] VectorTest.EdgeCases (0 ms)
+[ RUN      ] VectorTest.MoveSemantics
+[       OK ] VectorTest.MoveSemantics (0 ms)
+[----------] 17 tests from VectorTest (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 17 tests from 1 test suite ran. (3 ms total)
+[  PASSED  ] 17 tests.
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"MyTests" end time: May 23 19:28 MSK
+"MyTests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 23 19:28 MSK
