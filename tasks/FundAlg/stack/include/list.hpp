@@ -19,8 +19,8 @@ class Container {
 public:
     Container() = default;
     Container(const Container& other) = default;
-    Container& operator=(const Container& other) = default;
-    virtual ~Container() = default;
+    virtual Container& operator=(const Container& other) = 0;
+    virtual ~Container() = 0;
 
     virtual bool operator==(const Container& other) const = 0;
     virtual bool operator!=(const Container& other) const = 0;
@@ -30,6 +30,8 @@ public:
     virtual bool empty() const = 0;
 };
 
+template <typename T>
+Container<T>:: ~Container() = default;
 
 template<typename T>
 class List : public Container<T> {
@@ -74,6 +76,17 @@ public:
     }
 
     ~List() override { clear(); }
+
+    Container<T>& operator=(const Container<T>& other) override {
+        if (this != &other) {
+            auto* vec = dynamic_cast<const List*>(&other);
+            if (!vec) {
+                throw std::invalid_argument("Assigned Container must be of type List");
+            }
+            *this = *vec;
+        }
+        return *this;
+    }
 
     List &operator=(const List &other) {
         if (this != &other) {
