@@ -19,8 +19,8 @@ class Container {
 public:
     Container() = default;
     Container(const Container& other) = default;
-    Container& operator=(const Container& other) = default;
-    virtual ~Container() = default;
+    virtual Container& operator=(const Container& other) = 0;
+    virtual ~Container() = 0;
 
     virtual bool operator==(const Container& other) const = 0;
     virtual bool operator!=(const Container& other) const = 0;
@@ -29,10 +29,13 @@ public:
     virtual std::size_t max_size() const = 0;
     virtual bool empty() const = 0;
 };
+template <typename T>
+Container<T>:: ~Container() = default;
 
+namespace my_container {
 
     template<typename T>
-    class List final : public Container<T> {
+    class List : public Container<T> {
     private:
         struct Node {
             T data;
@@ -75,6 +78,17 @@ public:
         }
 
         ~List() override { clear(); }
+
+        Container<T>& operator=(const Container<T>& other) override {
+            if (this != &other) {
+                auto* vec = dynamic_cast<const List*>(&other);
+                if (!vec) {
+                    throw std::invalid_argument("Assigned Container must be of type List");
+                }
+                *this = *vec;
+            }
+            return *this;
+        }
 
         List &operator=(const List &other) {
             if (this != &other) {
@@ -364,5 +378,6 @@ public:
         bool operator>=(const List &other) const { return (*this <=> other) >= 0; }
     };
 
+}  // namespace my_container
 
 #endif //MY_LIST_CONTAINER_HPP

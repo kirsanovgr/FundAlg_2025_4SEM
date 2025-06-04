@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 #include "container.hpp"
 
+using namespace my_container;
+
 class ListTest : public ::testing::Test {
 protected:
     void SetUp() override {
