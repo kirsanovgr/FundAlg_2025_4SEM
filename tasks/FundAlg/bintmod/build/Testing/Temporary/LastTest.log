@@ -1,0 +1,45 @@
+Start testing: Jun 03 00:01 MSK
+----------------------------------------------------------
+1/1 Testing: MyTests
+1/1 Test: MyTests
+Command: "/mnt/c/Users/Олеся/CLionProjects/bintmod/build/tests"
+Directory: /mnt/c/Users/Олеся/CLionProjects/bintmod/build
+"MyTests" start time: Jun 03 00:01 MSK
+Output:
+----------------------------------------------------------
+Running main() from /mnt/c/Users/Олеся/CLionProjects/bintmod/build/_deps/googletest-src/googletest/src/gtest_main.cc
+[==========] Running 7 tests from 2 test suites.
+[----------] Global test environment set-up.
+[----------] 2 tests from BigIntModTest
+[ RUN      ] BigIntModTest.ModuloBasic
+[       OK ] BigIntModTest.ModuloBasic (0 ms)
+[ RUN      ] BigIntModTest.ModuloByZeroThrows
+[       OK ] BigIntModTest.ModuloByZeroThrows (0 ms)
+[----------] 2 tests from BigIntModTest (0 ms total)
+
+[----------] 5 tests from BigIntModExpTest
+[ RUN      ] BigIntModExpTest.PowerZeroExponent
+[       OK ] BigIntModExpTest.PowerZeroExponent (0 ms)
+[ RUN      ] BigIntModExpTest.PowerZeroBase
+[       OK ] BigIntModExpTest.PowerZeroBase (0 ms)
+[ RUN      ] BigIntModExpTest.BasicModExp
+[       OK ] BigIntModExpTest.BasicModExp (0 ms)
+[ RUN      ] BigIntModExpTest.ModuloByZeroInModExpThrows
+[       OK ] BigIntModExpTest.ModuloByZeroInModExpThrows (0 ms)
+[ RUN      ] BigIntModExpTest.NegativeExponentThrows
+[       OK ] BigIntModExpTest.NegativeExponentThrows (0 ms)
+[----------] 5 tests from BigIntModExpTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 7 tests from 2 test suites ran. (1 ms total)
+[  PASSED  ] 7 tests.
+libgcov profiling error:/mnt/c/Users/Олеся/CLionProjects/bintmod/build/CMakeFiles/tests.dir/tests/tests.cpp.gcda:overwriting an existing profile data with a different timestamp
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"MyTests" end time: Jun 03 00:01 MSK
+"MyTests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jun 03 00:01 MSK
