@@ -30,3 +30,4 @@
 *.exe
 *.out
 *.app
+/SysProg/lab3/cmake-build-debug-wsl/
