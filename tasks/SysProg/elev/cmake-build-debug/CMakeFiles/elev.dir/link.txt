@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/elev.dir/main.cpp.o CMakeFiles/elev.dir/src/logger.cpp.o CMakeFiles/elev.dir/src/el.cpp.o -o elev 

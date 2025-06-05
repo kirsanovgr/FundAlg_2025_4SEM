@@ -1,0 +1,3 @@
+/mnt/c/Users/Олеся/CLionProjects/elev/cmake-build-debug/CMakeFiles/elev.dir
+/mnt/c/Users/Олеся/CLionProjects/elev/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt/c/Users/Олеся/CLionProjects/elev/cmake-build-debug/CMakeFiles/rebuild_cache.dir
