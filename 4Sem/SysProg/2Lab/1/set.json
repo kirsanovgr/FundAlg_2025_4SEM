@@ -1,0 +1,58 @@
+{
+  "log": {
+    "format": "[%d %t][%s] %m",
+    "severity": {
+      "trace": {
+        "console": true,
+        "files": [
+          "trace_log.txt"
+        ]
+      },
+      "debug": {
+        "console": true,
+        "files": [
+          "debug_log.txt",
+          "../logger/debug_log.txt"
+        ]
+      },
+      "information": {
+        "console": true,
+        "files": []
+      },
+      "warning": {
+        "console": true,
+        "files": [
+          "warning_log.txt"
+        ]
+      },
+      "error": {
+        "console": true,
+        "files": [
+          "error_log.txt"
+        ]
+      },
+      "critical": {
+        "console": true,
+        "files": [
+          "critical_log.txt"
+        ]
+      }
+    },
+    "streams": [
+      {
+        "type": "console",
+        "severity": "trace"
+      },
+      {
+        "type": "file",
+        "severity": "trace",
+        "path": "trace_log.txt"
+      },
+      {
+        "type": "file",
+        "severity": "debug",
+        "path": "debug_log.txt"
+      }
+    ]
+  }
+}
